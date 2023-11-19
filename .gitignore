@@ -1,0 +1,8 @@
+.dev.vars
+.DS_Store
+.env
+.wrangler/
+test.js
+test.ts
+node_modules/
+distribution/
