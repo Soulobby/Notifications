@@ -3,6 +3,7 @@ main = "source/index.ts"
 compatibility_date = "2023-11-19"
 usage_model = "bundled"
 send_metrics = false
+workers_dev=false
 
 [triggers]
 crons = ["0 0 * * *"]

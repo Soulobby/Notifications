@@ -7,9 +7,6 @@ interface Env {
 }
 
 export default {
-	async fetch() {
-		return new Response("", { status: 444, statusText: "Soul drained." });
-	},
 	async scheduled(_, { WEBHOOK_URL }) {
 		const currentJewel = jewel();
 		const contents = [];
