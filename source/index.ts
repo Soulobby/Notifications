@@ -29,7 +29,7 @@ export default {
 
 		if (date.getUTCHours() === 20) {
 			// Santa leaves 2 hours after their arrival.
-			const leave = date.getTime() + 7_200_000;
+			const leave = Math.floor((date.getTime() + 7_200_000) / 1_000);
 			contents.push(`${roleMention(Role.Santa)} has arrived and will leave <t:${leave}:R>!`);
 		}
 
