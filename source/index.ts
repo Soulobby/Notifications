@@ -7,11 +7,11 @@ interface Env {
 }
 
 export default {
-	async scheduled({ scheduledTime }, { WEBHOOK_URL }) {
+	async scheduled({ cron, scheduledTime }, { WEBHOOK_URL }) {
 		const date = new Date(scheduledTime);
 		const contents = [];
 
-		if (date.getUTCHours() === 0) {
+		if (cron === "0 0 * * *") {
 			const currentJewel = jewel();
 
 			if (currentJewel) {
@@ -27,7 +27,7 @@ export default {
 			}
 		}
 
-		if (date.getTime() < CHRISTMAS_EVENT_END_TIMESTAMP && date.getUTCHours() === 20) {
+		if (cron === "0 20 * * 7" && date.getTime() < CHRISTMAS_EVENT_END_TIMESTAMP) {
 			// Santa leaves 2 hours after their arrival.
 			const leave = Math.floor((date.getTime() + 7_200_000) / 1_000);
 			contents.push(`${roleMention(Role.Santa)} has arrived and will leave <t:${leave}:R>!`);
