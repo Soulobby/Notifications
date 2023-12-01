@@ -1,5 +1,5 @@
 import { Jewel, jewel, stock } from "runescape";
-import { Role } from "./constants.js";
+import { CHRISTMAS_EVENT_END_TIMESTAMP, Role } from "./constants.js";
 import { roleMention } from "./utility.js";
 
 interface Env {
@@ -27,7 +27,7 @@ export default {
 			}
 		}
 
-		if (date.getUTCHours() === 20) {
+		if (date.getTime() < CHRISTMAS_EVENT_END_TIMESTAMP && date.getUTCHours() === 20) {
 			// Santa leaves 2 hours after their arrival.
 			const leave = Math.floor((date.getTime() + 7_200_000) / 1_000);
 			contents.push(`${roleMention(Role.Santa)} has arrived and will leave <t:${leave}:R>!`);
