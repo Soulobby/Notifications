@@ -27,7 +27,7 @@ export default {
 			}
 		}
 
-		if (cron === "0 20 * * 7" && date.getTime() < CHRISTMAS_EVENT_END_TIMESTAMP) {
+		if (cron === "0 20 * * 1" && date.getTime() < CHRISTMAS_EVENT_END_TIMESTAMP) {
 			// Santa leaves 2 hours after their arrival.
 			const leave = Math.floor((date.getTime() + 7_200_000) / 1_000);
 			contents.push(`${roleMention(Role.Santa)} has arrived and will leave <t:${leave}:R>!`);
