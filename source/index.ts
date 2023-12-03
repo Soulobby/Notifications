@@ -9,6 +9,7 @@ interface Env {
 export default {
 	async scheduled({ cron, scheduledTime }, { WEBHOOK_URL }) {
 		const date = new Date(scheduledTime);
+		const unix = date.getTime();
 		const contents = [];
 
 		if (cron === "0 0 * * *") {
@@ -27,10 +28,14 @@ export default {
 			}
 		}
 
-		if (cron === "0 20 * * 1" && date.getTime() < CHRISTMAS_EVENT_END_TIMESTAMP) {
-			// Santa leaves 2 hours after their arrival.
-			const leave = Math.floor((date.getTime() + 7_200_000) / 1_000);
-			contents.push(`${roleMention(Role.Santa)} has arrived and will leave <t:${leave}:R>!`);
+		if (cron === "25 19 * * 1" && unix < CHRISTMAS_EVENT_END_TIMESTAMP) {
+			// Presents start in 5 minutes.
+			const presents = Math.floor((unix + 300_000) / 1_000);
+
+			// Santa arrives in 35 minutes.
+			const santa = Math.floor((unix + 2_100_000) / 1_000);
+
+			contents.push(`Collect presents <t:${presents}:R>! ${roleMention(Role.Santa)} will arrive <t:${santa}:R>!`);
 		}
 
 		for (const content of contents) {
