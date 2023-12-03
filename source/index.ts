@@ -33,7 +33,7 @@ export default {
 			const presents = Math.floor((unix + 300_000) / 1_000);
 
 			// Santa arrives in 35 minutes.
-			const santa = Math.floor((unix + 3_300_000) / 1_000);
+			const santa = Math.floor((unix + 2_100_000) / 1_000);
 
 			contents.push(`Collect presents <t:${presents}:R>! ${roleMention(Role.Santa)} will arrive <t:${santa}:R>!`);
 		}
