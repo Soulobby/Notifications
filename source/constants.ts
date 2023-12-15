@@ -1,8 +1,33 @@
+import process from "node:process";
+
+const {
+	NODE_ENV,
+	DISCORD_TOKEN: PRODUCTION_DISCORD_TOKEN,
+	DEVELOPMENT_DISCORD_TOKEN,
+	NOTIFICATION_CHANNEL_ID: PRODUCTION_NOTIFICATION_CHANNEL_ID,
+	DEVELOPMENT_NOTIFICATION_CHANNEL_ID,
+} = process.env;
+
+// Production detection.
+export const PRODUCTION = NODE_ENV === "production";
+
+// Discord token.
+export const DISCORD_TOKEN = PRODUCTION ? PRODUCTION_DISCORD_TOKEN : DEVELOPMENT_DISCORD_TOKEN;
+
+// Notification channel id.
+export const NOTIFICATION_CHANNEL_ID = PRODUCTION
+	? PRODUCTION_NOTIFICATION_CHANNEL_ID
+	: DEVELOPMENT_NOTIFICATION_CHANNEL_ID;
+
+// Roles.
 export const Role = {
-	ApmekenAmethyst: "583288933773869066",
-	ScabariteCrystal: "583289583911960589",
-	MenaphiteGifts: "615200253087449091",
-	Santa: "1180053189807067186",
+	ApmekenAmethyst: PRODUCTION ? "583288933773869066" : "1089240396355338301",
+	ScabariteCrystal: PRODUCTION ? "583289583911960589" : "1089240398020497409",
+	MenaphiteGifts: PRODUCTION ? "615200253087449091" : "1089240411115102258",
+	Santa: PRODUCTION ? "1180053189807067186" : "1185172592630439966",
 } as const satisfies Readonly<Record<string, `${bigint}`>>;
 
+/**
+ * The timestamp when the Christmas event ends.
+ */
 export const CHRISTMAS_EVENT_END_TIMESTAMP = Date.UTC(2_024, 0, 8);
