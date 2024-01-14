@@ -24,10 +24,4 @@ export const Role = {
 	ApmekenAmethyst: PRODUCTION ? "583288933773869066" : "1089240396355338301",
 	ScabariteCrystal: PRODUCTION ? "583289583911960589" : "1089240398020497409",
 	MenaphiteGifts: PRODUCTION ? "615200253087449091" : "1089240411115102258",
-	Santa: PRODUCTION ? "1180053189807067186" : "1185172592630439966",
 } as const satisfies Readonly<Record<string, `${bigint}`>>;
-
-/**
- * The timestamp when the Christmas event ends.
- */
-export const CHRISTMAS_EVENT_END_TIMESTAMP = Date.UTC(2_024, 0, 8);
