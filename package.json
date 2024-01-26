@@ -8,7 +8,7 @@
 		"format": "prettier --write . && eslint --fix .",
 		"lint": "prettier --check . && eslint .",
 		"dev": "tsx --env-file=.env source/index.ts",
-		"start": "node --enable-source-maps --env-file=.env distribution/index.js",
+		"start": "node --enable-source-maps distribution/index.js",
 		"update": "pnpm update --interactive --latest"
 	},
 	"dependencies": {
