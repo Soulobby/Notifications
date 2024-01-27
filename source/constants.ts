@@ -24,4 +24,5 @@ export const Role = {
 	ApmekenAmethyst: PRODUCTION ? "583288933773869066" : "1089240396355338301",
 	ScabariteCrystal: PRODUCTION ? "583289583911960589" : "1089240398020497409",
 	MenaphiteGifts: PRODUCTION ? "615200253087449091" : "1089240411115102258",
+	WildernessFlashEventSpecial: PRODUCTION ? "1200660501458333777" : "1200661990453022791",
 } as const satisfies Readonly<Record<string, `${bigint}`>>;
