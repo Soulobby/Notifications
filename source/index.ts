@@ -1,5 +1,5 @@
 import { setInterval } from "node:timers";
-import { Jewel, /* WildernessFlashEvent,*/ jewel, stock /* wildernessFlashEvent */ } from "runescape";
+import { Jewel, WildernessFlashEvent, jewel, stock, wildernessFlashEvent } from "runescape";
 import { request } from "undici";
 import { DISCORD_TOKEN, NOTIFICATION_CHANNEL_ID, Role } from "./constants.js";
 import { roleMention } from "./utility.js";
@@ -15,26 +15,29 @@ setInterval(async () => {
 	const contents = [];
 	if (seconds !== 0) return;
 
-	// if (minutes === 55) {
-	// 	const nextWildernessFlashEvent = wildernessFlashEvent(1);
-	// 	let content = `${roleMention(Role.WildernessFlashEventSpecial)} `;
+	if (minutes === 55) {
+		const nextWildernessFlashEvent = wildernessFlashEvent(1);
+		let content = `${roleMention(Role.WildernessFlashEventSpecial)} `;
 
-	// 	switch (nextWildernessFlashEvent) {
-	// 		case WildernessFlashEvent.KingBlackDragonRampage:
-	// 			content += "The King Black Dragon will rampage";
-	// 			break;
-	// 		case WildernessFlashEvent.InfernalStar:
-	// 			content += "An infernal star will land";
-	// 			break;
-	// 		case WildernessFlashEvent.EvilBloodwoodTree:
-	// 			content += "An evil bloodwood tree will grow";
-	// 			break;
-	// 		default:
-	// 			return;
-	// 	}
+		switch (nextWildernessFlashEvent) {
+			case WildernessFlashEvent.KingBlackDragonRampage:
+				content += "The King Black Dragon will rampage";
+				break;
+			case WildernessFlashEvent.InfernalStar:
+				content += "An infernal star will land";
+				break;
+			case WildernessFlashEvent.EvilBloodwoodTree:
+				content += "An evil bloodwood tree will grow";
+				break;
+			case WildernessFlashEvent.WildyWyrm:
+				content += "The WildyWyrm will appear";
+				break;
+			default:
+				return;
+		}
 
-	// 	contents.push(`${content} <t:${Math.floor((date.getTime() + 300_000) / 1_000)}:R>!`);
-	// }
+		contents.push(`${content} <t:${Math.floor((date.getTime() + 300_000) / 1_000)}:R>!`);
+	}
 
 	if (hours === 0 && minutes === 0) {
 		const currentJewel = jewel();
