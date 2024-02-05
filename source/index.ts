@@ -30,7 +30,7 @@ setInterval(async () => {
 				content += "An evil bloodwood tree will grow";
 				break;
 			case WildernessFlashEvent.WildyWyrm:
-				content += "The WildyWyrm will appear";
+				content += "The WildyWyrm will burrow to the surface";
 				break;
 			default:
 				return;
