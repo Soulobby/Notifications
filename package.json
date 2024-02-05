@@ -12,7 +12,7 @@
 		"update": "pnpm update --interactive --latest"
 	},
 	"dependencies": {
-		"runescape": "^0.6.2",
+		"runescape": "^0.7.0",
 		"undici": "^6.5.0"
 	},
 	"devDependencies": {

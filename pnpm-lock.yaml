@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   runescape:
-    specifier: ^0.6.2
-    version: 0.6.2
+    specifier: ^0.7.0
+    version: 0.7.0
   undici:
     specifier: ^6.5.0
     version: 6.5.0
@@ -4100,8 +4100,8 @@ packages:
       queue-microtask: 1.2.3
     dev: true
 
-  /runescape@0.6.2:
-    resolution: {integrity: sha512-izoy9Fw3pSxWxaGTiyp9C8Z0ZpIbT0hNojb2rvo8820q9ai7hrJRzrNYEYkfJOJx63bhWB2odBtQGeyob7rQ8A==}
+  /runescape@0.7.0:
+    resolution: {integrity: sha512-hi/UCIjsmgOlAPObjtr6hlHzey+n8lfUIuXJhLYktA1M+cmDAxo5I5f0FH3WLXjl6NZfwZEGkkCfMU//dgmnHQ==}
     dependencies:
       dayjs: 1.11.10
       undici: 6.5.0
