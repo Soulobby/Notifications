@@ -19,7 +19,10 @@ setInterval(async () => {
 		// In 5 minutes.
 		const timestamp = `<t:${Math.floor((date.getTime() + 300_000) / 1_000)}:R>`;
 
-		if (guthixianCache(1)) contents.push(`A Guthixian Cache will open ${timestamp} with full rewards!`);
+		if (guthixianCache(1)) {
+			contents.push(`A ${roleMention(Role.GuthixianCache)} will open ${timestamp} with full rewards!`);
+		}
+
 		const nextWildernessFlashEvent = wildernessFlashEvent(1);
 		let wildernessFlashEventContent = `${roleMention(Role.WildernessFlashEventSpecial)} `;
 
