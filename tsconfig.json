@@ -21,6 +21,6 @@
 		"forceConsistentCasingInFileNames": true,
 		"lib": ["ESNext"],
 		"target": "ESNext",
-		"skipLibCheck": false,
+		"skipLibCheck": false
 	}
 }

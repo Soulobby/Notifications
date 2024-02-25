@@ -12,14 +12,14 @@
 		"update": "pnpm update --interactive --latest"
 	},
 	"dependencies": {
-		"runescape": "^0.7.0",
-		"undici": "^6.5.0"
+		"runescape": "^0.9.0",
+		"undici": "^6.6.2"
 	},
 	"devDependencies": {
-		"eslint": "^8.56.0",
-		"eslint-config-neon": "^0.1.57",
-		"prettier": "^3.2.4",
-		"tsx": "^4.7.0",
+		"eslint": "^8.57.0",
+		"eslint-config-neon": "^0.1.59",
+		"prettier": "^3.2.5",
+		"tsx": "^4.7.1",
 		"typescript": "^5.3.3"
 	},
 	"packageManager": "pnpm@8.11.0",
