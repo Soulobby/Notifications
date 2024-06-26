@@ -2,21 +2,28 @@ import { setInterval } from "node:timers";
 import {
 	Jewel,
 	WildernessFlashEvent,
-	guthixianCache as rGuthixianCache,
 	jewel,
-	stock,
+	guthixianCache as rGuthixianCache,
 	wildernessFlashEvent as rWildernessFlashEvent,
+	stock,
 } from "runescape";
 import { request } from "undici";
 import { DISCORD_TOKEN, NOTIFICATION_CHANNEL_ID, Role } from "./constants.js";
 import { roleMention } from "./utility.js";
 
-if (!DISCORD_TOKEN) throw new Error("No Discord token provided.");
-if (!NOTIFICATION_CHANNEL_ID) throw new Error("No notification channel id provided.");
+if (!DISCORD_TOKEN) {
+	throw new Error("No Discord token provided.");
+}
+
+if (!NOTIFICATION_CHANNEL_ID) {
+	throw new Error("No notification channel id provided.");
+}
 
 function guthixianCache(contents: string[], timestamp: string) {
 	if (rGuthixianCache(1)) {
-		contents.push(`A ${roleMention(Role.GuthixianCache)} will open ${timestamp} with full rewards!`);
+		contents.push(
+			`A ${roleMention(Role.GuthixianCache)} will open ${timestamp} with full rewards!`,
+		);
 	}
 
 	return contents;
@@ -53,7 +60,10 @@ setInterval(async () => {
 	const minutes = date.getUTCMinutes();
 	const seconds = date.getUTCSeconds();
 	let contents: string[] = [];
-	if (seconds !== 0) return;
+
+	if (seconds !== 0) {
+		return;
+	}
 
 	if (minutes === 55) {
 		// In 5 minutes.
@@ -75,7 +85,9 @@ setInterval(async () => {
 		}
 
 		if (stock().some((slot) => slot.includes("Menaphite"))) {
-			contents.push(`The Travelling Merchant has ${roleMention(Role.MenaphiteGifts)} in stock today!`);
+			contents.push(
+				`The Travelling Merchant has ${roleMention(Role.MenaphiteGifts)} in stock today!`,
+			);
 		}
 	}
 

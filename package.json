@@ -5,8 +5,8 @@
 	"scripts": {
 		"build": "tsc",
 		"test": "tsc --noEmit",
-		"format": "prettier --write . && eslint --fix .",
-		"lint": "prettier --check . && eslint .",
+		"format": "biome check --write",
+		"lint": "biome check",
 		"dev": "tsx --env-file=.env source/index.ts",
 		"start": "node --enable-source-maps distribution/index.js",
 		"update": "pnpm update --interactive --latest"
@@ -16,9 +16,7 @@
 		"undici": "^6.6.2"
 	},
 	"devDependencies": {
-		"eslint": "^8.57.0",
-		"eslint-config-neon": "^0.1.59",
-		"prettier": "^3.2.5",
+		"@biomejs/biome": "1.8.2",
 		"tsx": "^4.7.1",
 		"typescript": "^5.3.3"
 	},
