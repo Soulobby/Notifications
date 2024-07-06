@@ -1,3 +1,4 @@
+mod guthixian_cache;
 mod jewels;
 mod travelling_merchant;
 mod utility;
@@ -62,6 +63,18 @@ fn travelling_merchant_content(date: DateTime<Utc>) -> Option<String> {
     None
 }
 
+fn guthixian_cache_content(date: DateTime<Utc>) -> Option<String> {
+    if guthixian_cache::guthixian_cache(date) {
+        Some(format!(
+            "A <@&{}> will open <t:{}:R> with full rewards!",
+            GUTHIXIAN_CACHE,
+            date.timestamp()
+        ))
+    } else {
+        None
+    }
+}
+
 fn wilderness_flash_event_content(date: DateTime<Utc>) -> Option<String> {
     let content = match wilderness_flash_events::wilderness_flash_event(date) {
         wilderness_flash_events::WildernessFlashEvent::KingBlackDragonRampage => format!(
@@ -118,15 +131,13 @@ async fn notify(client: Http) -> Result<()> {
 
         if now.minute() == 55 {
             let date = now.clone() + Duration::from_secs(300);
+            let guthixian_cache_content = guthixian_cache_content(date);
 
-            let guthixian_cache_content = format!(
-                "A <@&{}> will open <t:{}:R> with full rewards!",
-                GUTHIXIAN_CACHE,
-                date.timestamp()
-            );
+            if let Some(event_content) = guthixian_cache_content {
+                content.push(event_content);
+            }
 
             let wilderness_flash_event_content = wilderness_flash_event_content(date);
-            content.push(guthixian_cache_content);
 
             if let Some(event_content) = wilderness_flash_event_content {
                 content.push(event_content);
