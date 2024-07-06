@@ -97,7 +97,7 @@ async fn notify(client: Http) -> Result<()> {
         interval.tick().await;
         let now = Utc::now();
 
-        if now.second() == 0 {
+        if now.second() != 0 {
             continue;
         }
 
