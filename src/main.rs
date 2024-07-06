@@ -103,7 +103,7 @@ async fn notify(client: Http) -> Result<()> {
 
         let mut content = vec![];
 
-        if now.minute() == 0 {
+        if now.hour() == 0 && now.minute() == 0 {
             let jewel_content = jewel_content(now);
             let travelling_merchant_content = travelling_merchant_content(now);
 
