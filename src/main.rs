@@ -137,7 +137,7 @@ async fn notify(client: Http) -> Result<()> {
             && now.hour() == 19
             && now.minute() == 50
         {
-            let santa_timestamp_start = now.clone() + Duration::from_secs(600);
+            let santa_timestamp_start = now + Duration::from_secs(600);
 
             content.push(format!(
                 "{} will arrive <t:{}:R>!",
@@ -147,7 +147,7 @@ async fn notify(client: Http) -> Result<()> {
         }
 
         if now.minute() == 55 {
-            let date = now.clone() + Duration::from_secs(300);
+            let date = now + Duration::from_secs(300);
             let guthixian_cache_content = guthixian_cache_content(date);
 
             if let Some(event_content) = guthixian_cache_content {
