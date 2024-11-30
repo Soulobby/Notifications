@@ -1,4 +1,4 @@
-use crate::utility::utility::{next_int, runedate};
+use crate::utility::functions::{next_int, runedate};
 use chrono::{DateTime, Utc};
 
 pub enum Jewels {

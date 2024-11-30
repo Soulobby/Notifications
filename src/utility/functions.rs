@@ -1,6 +1,5 @@
-use std::time::Duration;
-
 use chrono::{DateTime, Utc};
+use std::time::Duration;
 
 const INITIAL_RUNEDATE_TIMESTAMP: u64 = 1014768000;
 const MULTI: u128 = 0x5deece66d;

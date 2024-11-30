@@ -1,6 +1,5 @@
 use chrono::{DateTime, Utc};
-
-use crate::utility::utility::{next_int, runedate};
+use crate::utility::functions::{next_int, runedate};
 
 #[derive(Clone)]
 pub enum Item {
