@@ -3,16 +3,18 @@ mod jewels;
 mod travelling_merchant;
 mod utility;
 mod wilderness_flash_events;
-
 use anyhow::{Context, Result};
-use chrono::{DateTime, Timelike, Utc};
+use chrono::{DateTime, Datelike, Timelike, Utc, Weekday};
 use dotenvy::dotenv;
-use serenity::{all::CreateMessage, http::Http};
+use serenity::{
+    all::{CreateMessage, Mentionable},
+    http::Http,
+};
 use std::{env, time::Duration};
 use tokio::{spawn, time::interval};
 use utility::constants::{
-    APMEKEN_AMETHYST, GUTHIXIAN_CACHE, MENAPHITE_GIFTS, NOTIFICATION_CHANNEL_ID, SCABARITE_CRYSTAL,
-    WILDERNESS_FLASH_EVENT_SPECIAL,
+    APMEKEN_AMETHYST, GUTHIXIAN_CACHE, MENAPHITE_GIFTS, NOTIFICATION_CHANNEL_ID, SANTA,
+    SCABARITE_CRYSTAL, WILDERNESS_FLASH_EVENT_SPECIAL,
 };
 
 #[tokio::main]
@@ -127,6 +129,21 @@ async fn notify(client: Http) -> Result<()> {
             if let Some(event_content) = travelling_merchant_content {
                 content.push(event_content);
             }
+        }
+
+        if now.year() == 2024
+            && now.month() == 12
+            && now.weekday() == Weekday::Sun
+            && now.hour() == 19
+            && now.minute() == 50
+        {
+            let santa_timestamp_start = now.clone() + Duration::from_secs(600);
+
+            content.push(format!(
+                "{} will arrive <t:{}:R>!",
+                SANTA.mention(),
+                santa_timestamp_start.timestamp(),
+            ));
         }
 
         if now.minute() == 55 {
