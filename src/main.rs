@@ -11,7 +11,7 @@ use serenity::{
     http::Http,
 };
 use std::{env, time::Duration};
-use tokio::{spawn, time::interval};
+use tokio::{spawn, time::sleep};
 use utility::constants::{
     APMEKEN_AMETHYST, GUTHIXIAN_CACHE, MENAPHITE_GIFTS, NOTIFICATION_CHANNEL_ID, SANTA,
     SCABARITE_CRYSTAL, WILDERNESS_FLASH_EVENT_SPECIAL,
@@ -106,16 +106,13 @@ fn wilderness_flash_event_content(date: DateTime<Utc>) -> Option<String> {
 }
 
 async fn notify(client: Http) -> Result<()> {
-    let mut interval = interval(Duration::from_secs(1));
-
     loop {
-        interval.tick().await;
+        sleep(Duration::from_millis(
+            60000 - (Utc::now().timestamp_millis() % 60000) as u64,
+        ))
+        .await;
+
         let now = Utc::now();
-
-        if now.second() != 0 {
-            continue;
-        }
-
         let mut content = vec![];
 
         if now.hour() == 0 && now.minute() == 0 {
