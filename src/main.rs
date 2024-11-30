@@ -37,10 +37,10 @@ async fn main() -> Result<()> {
 fn jewel_content(date: DateTime<Utc>) -> Option<String> {
     let content = match jewels::jewel(date) {
         Some(jewels::Jewels::ApmekenAmethyst) => {
-            format!("The <@&{}> is accessible today.", APMEKEN_AMETHYST)
+            format!("The {} is accessible today.", APMEKEN_AMETHYST.mention())
         }
         Some(jewels::Jewels::ScabariteCrystal) => {
-            format!("The <@&{}> is accessible today.", SCABARITE_CRYSTAL)
+            format!("The {} is accessible today.", SCABARITE_CRYSTAL.mention())
         }
         _ => return None,
     };
@@ -55,8 +55,8 @@ fn travelling_merchant_content(date: DateTime<Utc>) -> Option<String> {
             | travelling_merchant::Item::MenaphiteGiftOfferingMedium
             | travelling_merchant::Item::MenaphiteGiftOfferingSmall => {
                 return Some(format!(
-                    "The Travelling Merchant has <@&{}> in stock today!",
-                    MENAPHITE_GIFTS
+                    "The Travelling Merchant has {} in stock today!",
+                    MENAPHITE_GIFTS.mention()
                 ));
             }
             _ => continue,
@@ -68,8 +68,8 @@ fn travelling_merchant_content(date: DateTime<Utc>) -> Option<String> {
 fn guthixian_cache_content(date: DateTime<Utc>) -> Option<String> {
     if guthixian_cache::guthixian_cache(date) {
         Some(format!(
-            "A <@&{}> will open <t:{}:R> with full rewards!",
-            GUTHIXIAN_CACHE,
+            "A {} will open <t:{}:R> with full rewards!",
+            GUTHIXIAN_CACHE.mention(),
             date.timestamp()
         ))
     } else {
@@ -80,23 +80,23 @@ fn guthixian_cache_content(date: DateTime<Utc>) -> Option<String> {
 fn wilderness_flash_event_content(date: DateTime<Utc>) -> Option<String> {
     let content = match wilderness_flash_events::wilderness_flash_event(date) {
         wilderness_flash_events::WildernessFlashEvent::KingBlackDragonRampage => format!(
-            "<@&{}> The King Black Dragon will rampage <t:{}:R>!",
-            WILDERNESS_FLASH_EVENT_SPECIAL,
+            "{} The King Black Dragon will rampage <t:{}:R>!",
+            WILDERNESS_FLASH_EVENT_SPECIAL.mention(),
             date.timestamp()
         ),
         wilderness_flash_events::WildernessFlashEvent::InfernalStar => format!(
-            "<@&{}> An infernal star will land <t:{}:R>!",
-            WILDERNESS_FLASH_EVENT_SPECIAL,
+            "{} An infernal star will land <t:{}:R>!",
+            WILDERNESS_FLASH_EVENT_SPECIAL.mention(),
             date.timestamp()
         ),
         wilderness_flash_events::WildernessFlashEvent::EvilBloodwoodTree => format!(
-            "<@&{}> An evil bloodwood tree will grow <t:{}:R>!",
-            WILDERNESS_FLASH_EVENT_SPECIAL,
+            "{} An evil bloodwood tree will grow <t:{}:R>!",
+            WILDERNESS_FLASH_EVENT_SPECIAL.mention(),
             date.timestamp()
         ),
         wilderness_flash_events::WildernessFlashEvent::StrykeTheWyrm => format!(
-            "<@&{}> The WildyWyrm will burrow to the surface <t:{}:R>!",
-            WILDERNESS_FLASH_EVENT_SPECIAL,
+            "{} The WildyWyrm will burrow to the surface <t:{}:R>!",
+            WILDERNESS_FLASH_EVENT_SPECIAL.mention(),
             date.timestamp()
         ),
         _ => return None,
