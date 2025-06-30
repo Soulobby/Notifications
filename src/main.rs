@@ -13,8 +13,8 @@ use serenity::{
 use std::{env, time::Duration};
 use tokio::{spawn, time::sleep};
 use utility::constants::{
-    APMEKEN_AMETHYST, CLAWDIA, GUTHIXIAN_CACHE, MENAPHITE_GIFTS, NOTIFICATION_CHANNEL_ID, SANTA,
-    SCABARITE_CRYSTAL, WILDERNESS_FLASH_EVENT_SPECIAL,
+    APMEKEN_AMETHYST, CLAWDIA, GUTHIXIAN_CACHE, HAPPY_HOUR, MENAPHITE_GIFTS,
+    NOTIFICATION_CHANNEL_ID, SANTA, SCABARITE_CRYSTAL, WILDERNESS_FLASH_EVENT_SPECIAL,
 };
 
 #[tokio::main]
@@ -139,6 +139,24 @@ async fn notify(client: Http) -> Result<()> {
                 "{} spawns <t:{}:R>!",
                 CLAWDIA.mention(),
                 clawdia_timestamp_start.timestamp(),
+            ));
+        }
+
+        if now.year() == 2025
+            && ((now.month() == 6 && now.day() >= 30 && now.hour() >= 10)
+                || (now.month() == 7 && now.day() < 28))
+            && ((now.hour() == 0 && now.minute() == 55)
+                || (now.hour() == 8 && now.minute() == 55)
+                || (now.hour() == 13 && now.minute() == 55)
+                || (now.hour() == 16 && now.minute() == 25)
+                || (now.hour() == 20 && now.minute() == 55))
+        {
+            let happy_hourtimestamp_start = now + Duration::from_secs(300);
+
+            content.push(format!(
+                "{} starts <t:{}:R>!",
+                HAPPY_HOUR.mention(),
+                happy_hourtimestamp_start.timestamp(),
             ));
         }
 
