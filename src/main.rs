@@ -13,7 +13,7 @@ use serenity::{
 use std::{env, time::Duration};
 use tokio::{spawn, time::sleep};
 use utility::constants::{
-    APMEKEN_AMETHYST, GUTHIXIAN_CACHE, MENAPHITE_GIFTS, NOTIFICATION_CHANNEL_ID, SANTA,
+    APMEKEN_AMETHYST, CLAWDIA, GUTHIXIAN_CACHE, MENAPHITE_GIFTS, NOTIFICATION_CHANNEL_ID, SANTA,
     SCABARITE_CRYSTAL, WILDERNESS_FLASH_EVENT_SPECIAL,
 };
 
@@ -126,6 +126,20 @@ async fn notify(client: Http) -> Result<()> {
             if let Some(event_content) = travelling_merchant_content {
                 content.push(event_content);
             }
+        }
+
+        if now.year() == 2025
+            && ((now.month() == 6 && now.day() >= 30 && now.hour() >= 10)
+                || (now.month() == 7 && now.day() < 28))
+            && now.minute() == 40
+        {
+            let clawdia_timestamp_start = now + Duration::from_secs(300);
+
+            content.push(format!(
+                "{} spawns <t:{}:R>!",
+                CLAWDIA.mention(),
+                clawdia_timestamp_start.timestamp(),
+            ));
         }
 
         if now.year() == 2024
