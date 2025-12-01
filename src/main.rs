@@ -176,7 +176,7 @@ async fn notify(client: Http) -> Result<()> {
         }
 
         if (
-            (now.year() == 2025 && now.month() == 12 && now.day() >= 1)
+            (now.year() == 2025 && now.month() == 12 && now.day() >= 1 && now.hour() == 11 && now.minute() == 15)
             || (now.year() == 2026 && now.month() == 1 && now.day() <= 4)
         )
         && now.minute() == 40
