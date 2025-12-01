@@ -175,11 +175,11 @@ async fn notify(client: Http) -> Result<()> {
             ));
         }
 
-        if (
-            (now.year() == 2025 && now.month() == 12 && now.day() >= 1 && now.hour() == 11 && now.minute() == 15)
-            || (now.year() == 2026 && now.month() == 1 && now.day() <= 4)
-        )
-        && now.minute() == 40
+        if now.minute() == 40
+        && ((now.year() == 2025
+            && now.month() == 12
+            && (now.day() > 1 || (now.day() == 1 && now.hour() >= 11)))
+            || (now.year() == 2026 && now.month() == 1 && now.day() < 5))
         {
             let snowverload_timestamp_start = now + Duration::from_secs(300);
 
