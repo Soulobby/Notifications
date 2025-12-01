@@ -12,9 +12,13 @@ use serenity::{
 };
 use std::{env, time::Duration};
 use tokio::{spawn, time::sleep};
-use utility::constants::{
-    APMEKEN_AMETHYST, CLAWDIA, GUTHIXIAN_CACHE, HAPPY_HOUR, MENAPHITE_GIFTS,
-    NOTIFICATION_CHANNEL_ID, SANTA, SCABARITE_CRYSTAL, SNOWVERLOAD, WILDERNESS_FLASH_EVENT_SPECIAL,
+use utility::{
+    constants::{
+        APMEKEN_AMETHYST, CLAWDIA, GUTHIXIAN_CACHE, HAPPY_HOUR, MENAPHITE_GIFTS,
+        NOTIFICATION_CHANNEL_ID, SANTA, SCABARITE_CRYSTAL, SNOWVERLOAD,
+        WILDERNESS_FLASH_EVENT_SPECIAL,
+    },
+    functions::is_christmas_2025_event,
 };
 
 #[tokio::main]
@@ -163,11 +167,7 @@ async fn notify(client: Http) -> Result<()> {
         if now.weekday() == Weekday::Sun
             && now.hour() == 19
             && now.minute() == 50
-            && ((now.year() == 2024 && now.month() == 12)
-                || ((now.year() == 2025
-                    && now.month() == 12
-                    && (now.day() > 1 || (now.day() == 1 && now.hour() >= 11)))
-                    || (now.year() == 2026 && now.month() == 1 && now.day() < 5)))
+            && ((now.year() == 2024 && now.month() == 12) || is_christmas_2025_event(now))
         {
             let santa_timestamp_start = now + Duration::from_secs(600);
 
@@ -178,12 +178,7 @@ async fn notify(client: Http) -> Result<()> {
             ));
         }
 
-        if now.minute() == 40
-            && ((now.year() == 2025
-                && now.month() == 12
-                && (now.day() > 1 || (now.day() == 1 && now.hour() >= 11)))
-                || (now.year() == 2026 && now.month() == 1 && now.day() < 5))
-        {
+        if now.minute() == 40 && is_christmas_2025_event(now) {
             let snowverload_timestamp_start = now + Duration::from_secs(300);
 
             content.push(format!(

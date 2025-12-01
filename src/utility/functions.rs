@@ -1,4 +1,4 @@
-use chrono::{DateTime, Utc};
+use chrono::{DateTime, Datelike, Timelike, Utc};
 use std::time::Duration;
 
 const INITIAL_RUNEDATE_TIMESTAMP: u64 = 1014768000;
@@ -41,4 +41,13 @@ pub fn next_int(seed: u128, no: u128, repeats: u32) -> u128 {
 
     computed_seed >>= 17;
     computed_seed % no
+}
+
+pub fn is_christmas_2025_event(now: DateTime<Utc>) -> bool {
+    (now.year() == 2025
+        && now.month() == 12
+        && (now.day() > 1
+            || (now.day() == 1 && now.hour() > 11)
+            || (now.day() == 1 && now.hour() == 11 && now.minute() >= 15)))
+        || (now.year() == 2026 && now.month() == 1 && now.day() < 5)
 }
