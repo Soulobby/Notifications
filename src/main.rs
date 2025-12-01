@@ -161,14 +161,14 @@ async fn notify(client: Http) -> Result<()> {
         }
 
         if now.weekday() == Weekday::Sun
-    && now.hour() == 19
-    && now.minute() == 50
-    && ((now.year() == 2024 && now.month() == 12)
-        || ((now.year() == 2025
-            && now.month() == 12
-            && (now.day() > 1 || (now.day() == 1 && now.hour() >= 11)))
-            || (now.year() == 2026 && now.month() == 1 && now.day() < 5)))
-{
+            && now.hour() == 19
+            && now.minute() == 50
+            && ((now.year() == 2024 && now.month() == 12)
+                || ((now.year() == 2025
+                    && now.month() == 12
+                    && (now.day() > 1 || (now.day() == 1 && now.hour() >= 11)))
+                    || (now.year() == 2026 && now.month() == 1 && now.day() < 5)))
+        {
             let santa_timestamp_start = now + Duration::from_secs(600);
 
             content.push(format!(
