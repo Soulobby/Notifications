@@ -9,3 +9,4 @@ pub const GUTHIXIAN_CACHE: RoleId = RoleId::new(1211186242067370034);
 pub const CLAWDIA: RoleId = RoleId::new(1389195127133569144);
 pub const HAPPY_HOUR: RoleId = RoleId::new(1389198894323204227);
 pub const SANTA: RoleId = RoleId::new(1312368600820088872);
+pub const SNOWVERLOAD: RoleId = RoleId::new(1445032404380155955);
