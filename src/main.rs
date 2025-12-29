@@ -167,7 +167,8 @@ async fn notify(client: Http) -> Result<()> {
         if now.weekday() == Weekday::Sun
             && now.hour() == 19
             && now.minute() == 50
-            && ((now.year() == 2024 && now.month() == 12) || is_christmas_2025_event(now))
+            && ((now.year() == 2024 && now.month() == 12)
+                || (now.year() == 2025 && is_christmas_2025_event(now)))
         {
             let santa_timestamp_start = now + Duration::from_secs(600);
 
